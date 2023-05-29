@@ -1,5 +1,6 @@
 import {
   ConnectWallet,
+  useDisconnect,
   ThirdwebNftMedia,
   useAddress,
   useContract,
@@ -24,6 +25,8 @@ const Stake: NextPage = () => {
   const address = useAddress();
 
   console.log("address",address);
+
+  const disconnect = useDisconnect();
   
 
   const { contract: nftDropContract } = useContract(
@@ -94,8 +97,22 @@ const Stake: NextPage = () => {
         <ConnectWallet />
       ) : (
         <>
+
+          <div>My wallet address is {address}</div>
+          <button onClick={disconnect}>Disconnect</button>
+
+
           <h2>Your Tokens</h2>
+
           <div className={styles.tokenGrid}>
+
+            <div className={styles.tokenItem}>
+              <h3 className={styles.tokenLabel}>Current Balance</h3>
+              <p className={styles.tokenValue}>
+                <b>{tokenBalance?.displayValue}</b> {tokenBalance?.symbol}
+              </p>
+            </div>
+
             <div className={styles.tokenItem}>
               <h3 className={styles.tokenLabel}>Claimable Rewards</h3>
               <p className={styles.tokenValue}>
@@ -106,21 +123,19 @@ const Stake: NextPage = () => {
                 </b>{" "}
                 {tokenBalance?.symbol}
               </p>
+
+              <Web3Button
+                action={(contract) => contract.call("claimRewards")}
+                contractAddress={stakingContractAddress}
+              >
+                Claim Rewards
+              </Web3Button>
+
             </div>
-            <div className={styles.tokenItem}>
-              <h3 className={styles.tokenLabel}>Current Balance</h3>
-              <p className={styles.tokenValue}>
-                <b>{tokenBalance?.displayValue}</b> {tokenBalance?.symbol}
-              </p>
-            </div>
+
           </div>
 
-          <Web3Button
-            action={(contract) => contract.call("claimRewards")}
-            contractAddress={stakingContractAddress}
-          >
-            Claim Rewards
-          </Web3Button>
+
 
           <hr className={`${styles.divider} ${styles.spacerTop}`} />
           <h2>Your Staked NFTs</h2>

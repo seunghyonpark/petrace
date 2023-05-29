@@ -115,7 +115,7 @@
 
 .tokenItem {
   width: 35%;
-  height: 120px;
+  padding: 10px;
   border-radius: 16px;
   display: flex;
   flex-direction: column;
