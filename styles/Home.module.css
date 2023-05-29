@@ -27,7 +27,7 @@
 .smallDivider {
   width: 25%;
   border-color: grey;
-  margin-top: 64px;
+  margin-top: 24px;
   opacity: 0.25;
 }
 
@@ -39,7 +39,7 @@
   align-items: center;
   justify-content: center;
   gap: 2%;
-  margin-top: 28px;
+  margin-top: 8px;
   flex-wrap: wrap;
 }
 

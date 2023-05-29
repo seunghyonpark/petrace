@@ -37,7 +37,7 @@ const Home: NextPage = () => {
           onClick={() => router.push(`/stake`)}
         >
           {/* Staking an NFT */}
-          <Image src="/icons/token.webp" alt="token" width={64} height={64} />
+          <Image src="/arena0.png" alt="arena" width={150} height={60} />
           <h2 className={styles.selectBoxTitle}>Stake Your NFTs</h2>
           <p className={styles.selectBoxDescription}>
             Rent your NFT asset to the arena. Then you can earn participation allowance every day.
