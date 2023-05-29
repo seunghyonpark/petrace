@@ -10,6 +10,13 @@ const Home: NextPage = () => {
     <div className={styles.container}>
       {/* Top Section */}
       <h1 className={styles.h1}>PETRACE - Custom Playing Game</h1>
+
+      <Image
+        src="/About-Us.png"
+        width={400}
+        height={100}
+        alt="About Us"
+      />
       <div className={styles.nftBoxGrid}>
         <div
           className={styles.optionSelectBox}
@@ -20,7 +27,7 @@ const Home: NextPage = () => {
           <Image src="/icons/drop.webp" alt="drop" width={64} height={64} />
           <h2 className={styles.selectBoxTitle}>Mint a new NFT</h2>
           <p className={styles.selectBoxDescription}>
-            Use the NFT Drop Contract to claim an NFT from the collection.
+            Mint NFTs. Your new NFT brings you good luck.
           </p>
         </div>
 
@@ -33,8 +40,7 @@ const Home: NextPage = () => {
           <Image src="/icons/token.webp" alt="token" width={64} height={64} />
           <h2 className={styles.selectBoxTitle}>Stake Your NFTs</h2>
           <p className={styles.selectBoxDescription}>
-            Use the custom staking contract deployed via <b>thirdweb Deploy</b>{" "}
-            to stake your NFTs, and earn tokens from the <b>Token</b> contract.
+            Rent your NFT asset to the arena. Then you can earn participation allowance every day.
           </p>
         </div>
       </div>
