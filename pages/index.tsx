@@ -24,7 +24,7 @@ const Home: NextPage = () => {
           onClick={() => router.push(`/mint`)}
         >
           {/* Mint a new NFT */}
-          <Image src="/icons/drop.webp" alt="drop" width={64} height={64} />
+          <Image src="/drop.jpg" alt="drop" width={60} height={60} />
           <h2 className={styles.selectBoxTitle}>Mint a new NFT</h2>
           <p className={styles.selectBoxDescription}>
             Mint NFTs. Your new NFT brings you good luck.
