@@ -1,11 +1,19 @@
-import { Web3Button } from "@thirdweb-dev/react";
+import { Web3Button, useAddress, ConnectWallet } from "@thirdweb-dev/react";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { nftDropContractAddress } from "../consts/contractAddresses";
 import styles from "../styles/Home.module.css";
 
+
+
+
+
+
 const Mint: NextPage = () => {
   const router = useRouter();
+
+  const address = useAddress();
+
 
   return (
     <div className={styles.container}>
@@ -16,6 +24,18 @@ const Mint: NextPage = () => {
         one of the NFTs that we lazy minted.
       </p>
       <hr className={`${styles.smallDivider} ${styles.detailPageHr}`} />
+
+
+
+      {!address && (
+        <div>No wallet connected</div>
+      )}
+
+      {address && (
+        <div>My wallet address is {address}</div>
+      )}
+
+
 
       <Web3Button
         //colorMode="dark"
