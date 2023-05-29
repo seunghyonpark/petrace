@@ -34,7 +34,11 @@ const Stake: NextPage = () => {
     tokenContractAddress,
     "token"
   );
+
   const { contract, isLoading } = useContract(stakingContractAddress);
+  //const { contract } = useContract(stakingContractAddress2);
+
+
   const { data: ownedNfts } = useOwnedNFTs(nftDropContract, address);
   const { data: tokenBalance } = useTokenBalance(tokenContract, address);
   const [claimableRewards, setClaimableRewards] = useState<BigNumber>();
@@ -64,10 +68,17 @@ const Stake: NextPage = () => {
       address,
       stakingContractAddress
     );
+
     if (!isApproved) {
       await nftDropContract?.setApprovalForAll(stakingContractAddress, true);
     }
-    await contract?.call("stake", [id]);
+
+
+
+    const data = await contract?.call("stake", [id]);
+
+    console.log("data",data);
+
   }
 
   if (isLoading) {
