@@ -19,8 +19,10 @@ import {
   tokenContractAddress,
 } from "../consts/contractAddresses";
 import styles from "../styles/Home.module.css";
+import { useRouter } from "next/router";
 
 const Stake: NextPage = () => {
+  const router = useRouter();
 
   const address = useAddress();
 
@@ -43,13 +45,18 @@ const Stake: NextPage = () => {
 
 
   const { data: ownedNfts } = useOwnedNFTs(nftDropContract, address);
+
   const { data: tokenBalance } = useTokenBalance(tokenContract, address);
+
   const [claimableRewards, setClaimableRewards] = useState<BigNumber>();
+
   const { data: stakedTokens } = useContractRead(
     contract,
     "getStakeInfo",
     [address]
   );
+
+  console.log("stakedTokens", stakedTokens);
 
   useEffect(() => {
     if (!contract || !address) return;
@@ -90,7 +97,26 @@ const Stake: NextPage = () => {
 
   return (
     <div className={styles.container}>
+
+
+      <div
+        role="button"
+        onClick={() => router.push(`/`)}
+      >
+        Go to Home
+      </div>
+      <div
+        role="button"
+        onClick={() => router.push(`/mint`)}
+      >
+        Go to Mint
+      </div>
+
+      <hr className={`${styles.divider} ${styles.spacerTop}`} />
+
       <h1 className={styles.h1}>Stake Your NFTs</h1>
+
+
       <hr className={`${styles.divider} ${styles.spacerTop}`} />
 
       {!address ? (
@@ -153,6 +179,7 @@ const Stake: NextPage = () => {
 
           <h2>Your Unstaked NFTs</h2>
           <div className={styles.nftBoxGrid}>
+
             {ownedNfts?.map((nft) => (
 
               <div className={styles.nftBox} key={nft.metadata.id.toString()}>
@@ -179,6 +206,7 @@ const Stake: NextPage = () => {
               </div>
 
             ))}
+
           </div>
         </>
       )}

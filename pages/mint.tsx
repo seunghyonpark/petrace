@@ -17,13 +17,27 @@ const Mint: NextPage = () => {
 
 
   return (
+
     <div className={styles.container}>
+
+      <div
+        role="button"
+        onClick={() => router.push(`/`)}
+      >
+        Go to Home
+      </div>
+      <div
+        role="button"
+        onClick={() => router.push(`/stake`)}
+      >
+        Go to Stake
+      </div>
+
+      <hr className={`${styles.divider} ${styles.spacerTop}`} />  
+
       <h1 className={styles.h1}>Mint An NFT!</h1>
 
-      <p className={styles.explain}>
-        Here is where we use our <b>NFT Drop</b> contract to allow users to mint
-        one of the NFTs that we lazy minted.
-      </p>
+
       <hr className={`${styles.smallDivider} ${styles.detailPageHr}`} />
 
 
@@ -37,7 +51,7 @@ const Mint: NextPage = () => {
         <button onClick={disconnect}>Disconnect</button>
       </>)}
 
-
+      <hr className={`${styles.divider} ${styles.spacerTop}`} />
 
       <Web3Button
         //colorMode="dark"
