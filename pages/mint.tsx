@@ -1,4 +1,4 @@
-import { Web3Button, useAddress, ConnectWallet } from "@thirdweb-dev/react";
+import { Web3Button, useAddress, useDisconnect, ConnectWallet } from "@thirdweb-dev/react";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { nftDropContractAddress } from "../consts/contractAddresses";
@@ -13,6 +13,7 @@ const Mint: NextPage = () => {
   const router = useRouter();
 
   const address = useAddress();
+  const disconnect = useDisconnect();
 
 
   return (
@@ -31,9 +32,10 @@ const Mint: NextPage = () => {
         <div>No wallet connected</div>
       )}
 
-      {address && (
+      {address && (<>
         <div>My wallet address is {address}</div>
-      )}
+        <button onClick={disconnect}>Disconnect</button>
+      </>)}
 
 
 
